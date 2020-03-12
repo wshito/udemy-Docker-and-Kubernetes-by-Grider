@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t wshito/sec06-frontend -f ./sec06-frontend/Dockerfile.dev ./sec06-frontend/
+
+script:
+  - docker run -e CI=true wshito/sec06-frontend npm run test
